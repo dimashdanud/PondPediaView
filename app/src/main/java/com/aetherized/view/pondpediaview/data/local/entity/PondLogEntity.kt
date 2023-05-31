@@ -15,8 +15,6 @@ data class PondLogEntity(
     @ColumnInfo(name = "id")
     val id: Int = 0,
 
-    @ColumnInfo(name = "pond_id")
-    val pondId: Int,
 
     @ColumnInfo(name = "action")
     val action: String? = null,

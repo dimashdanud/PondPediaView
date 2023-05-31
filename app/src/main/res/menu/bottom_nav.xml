@@ -7,7 +7,7 @@
 
     <item android:title="@string/title2"
         android:id="@+id/updates"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/baseline_rotate_right_24"/>
 
     <item android:title="@string/title3"
         android:id="@+id/add"
@@ -15,7 +15,7 @@
 
     <item android:title="@string/title4"
         android:id="@+id/explore"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/outline_explore_24"/>
 
     <item android:title="@string/title4"
         android:id="@+id/more"

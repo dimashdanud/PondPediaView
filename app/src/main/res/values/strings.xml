@@ -96,6 +96,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="settings_menu_item1">Settings</string>
 
+    <string name="pond_menu_update">UPDATE POND</string>
+    <string name="pond_menu_delete">REMOVE POND</string>
+
 
     <string name="name">Pond Name</string>
     <string name="length">Length (Meter)</string>
@@ -112,7 +115,8 @@
     <string name="fish_type">Fish Type</string>
     <string name="fish_amount">Fish Amount / Pond</string>
     <string name="fish_harvest">Fish Weight for Harvest (g)</string>
-    <string name="fish_weight">Fish Current Weight (cm)</string>
+    <string name="fish_weight">Fish Current Weight (g)</string>
+    <string name="fish_length">Fish Current length (g)</string>
 
     <string name="feed_percentage">Feed Percentage / Fish Weight (%)</string>
     <string name="feed_protein">Protein Percentage (%)</string>

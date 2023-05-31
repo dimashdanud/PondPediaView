@@ -5,56 +5,79 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.aetherized.view.pondpediaview.R
+import com.aetherized.view.pondpediaview.data.local.entity.PondEntity
+import com.aetherized.view.pondpediaview.data.model.PondFeed
+import com.aetherized.view.pondpediaview.data.model.PondWater
+import com.aetherized.view.pondpediaview.ui.authenticated.home.add.AddViewModel
+import com.aetherized.view.pondpediaview.ui.authenticated.home.pond.PondViewModel
+import com.aetherized.view.pondpediaview.ui.authenticated.pond.logs.PondLogViewModel
+import com.aetherized.view.pondpediaview.utils.customview.MyButton
+import com.aetherized.view.pondpediaview.utils.helper.Constants
+import com.aetherized.view.pondpediaview.utils.helper.ViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PondDetailsFeedFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PondDetailsFeedFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var view: View
+    private val addViewModel  by activityViewModels<AddViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val viewModelFactory by lazy { ViewModelFactory.getInstance(requireContext()) }
+    private val pondViewModel by viewModels<PondViewModel> { viewModelFactory }
+    private val pondLogViewModel by viewModels<PondLogViewModel> { viewModelFactory }
+
+
+    private lateinit var pondData: PondFeed
+
+    private lateinit var feedAmount: TextView
+    private lateinit var feedProtein: TextView
+    private lateinit var feedLipid: TextView
+    private lateinit var feedCarbohydrate: TextView
+    private lateinit var feedOthers: TextView
+    private lateinit var feedFrequency: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pond_details_feed, container, false)
+    ): View {
+        view = inflater.inflate(R.layout.fragment_pond_details_feed, container, false)
+
+        arguments?.getParcelable<PondFeed>(Constants.PARCELABLE_KEY)?.let {
+            pondData = it
+        }
+
+        initializeView()
+        initializeValue()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PondDetailsFeedFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PondDetailsFeedFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onResume() {
+        super.onResume()
+        initializeValue()
     }
+
+
+    private fun initializeValue() {
+
+        feedProtein.text = pondData?.proteintPercentage.toString()
+        feedLipid.text = pondData?.lipidPercentage.toString()
+        feedCarbohydrate.text = pondData?.carbohydratePercentage.toString()
+        feedOthers.text = pondData?.othersPercentage.toString()
+        feedFrequency.text = pondData?.feedingFrequencyDaily.toString()
+
+    }
+
+    private fun initializeView() {
+        feedAmount = view.findViewById(R.id.amountEditText)
+        feedProtein = view.findViewById(R.id.proteinEditText)
+        feedLipid =  view.findViewById(R.id.lipidEditText)
+        feedCarbohydrate =  view.findViewById(R.id.carbohydrateEditText)
+        feedOthers =  view.findViewById(R.id.othersEditText)
+        feedFrequency =  view.findViewById(R.id.frequencyEditText)
+
+    }
+
 }

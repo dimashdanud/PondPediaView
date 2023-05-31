@@ -15,7 +15,7 @@ import kotlinx.parcelize.Parcelize
 data class PondEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Int = 0,
+    val pid: Int = 0,
 
     @ColumnInfo(name = "pond_name")
     val pondName: String,

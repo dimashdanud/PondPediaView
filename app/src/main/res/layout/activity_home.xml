@@ -21,7 +21,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorBackgroundFloating"
                 app:titleTextColor="?attr/colorOnBackground"
-                app:title="@string/title1"
+                app:title="@string/title2"
                 app:layout_scrollFlags="scroll|enterAlways"/>
 
         </com.google.android.material.appbar.AppBarLayout>

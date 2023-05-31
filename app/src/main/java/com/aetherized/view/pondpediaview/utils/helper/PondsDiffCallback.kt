@@ -13,7 +13,7 @@ class PondsDiffCallback (private val mOldList: List<PondEntity>, private val mNe
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return mOldList[oldItemPosition].id == mNewPondList[newItemPosition].id
+        return mOldList[oldItemPosition].pid == mNewPondList[newItemPosition].pid
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

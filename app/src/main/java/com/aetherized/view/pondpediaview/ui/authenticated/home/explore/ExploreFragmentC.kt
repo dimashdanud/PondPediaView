@@ -16,7 +16,7 @@ class ExploreFragmentC : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        view = inflater.inflate(R.layout.fragment_add_c, container, false)
+        view = inflater.inflate(R.layout.fragment_explore_c, container, false)
 
         return view
     }

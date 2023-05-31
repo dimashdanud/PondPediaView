@@ -1,5 +1,6 @@
 package com.aetherized.view.pondpediaview.ui.adapter
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aetherized.view.pondpediaview.R
 import com.aetherized.view.pondpediaview.data.local.entity.PondEntity
+import com.aetherized.view.pondpediaview.ui.authenticated.pond.PondActivity
 import com.aetherized.view.pondpediaview.ui.authenticated.pond.details.PondDetailsFragment
 import com.aetherized.view.pondpediaview.utils.helper.Constants
 import com.aetherized.view.pondpediaview.utils.helper.PondsDiffCallback
@@ -53,19 +55,10 @@ class PondAdapter(private var ponds: ArrayList<PondEntity>) :
             pondName.text = pond.pondName
             pondFish.text = pond.pondFish.name
             itemView.setOnClickListener {
-                val bundle = Bundle().apply {
-                    putParcelable(Constants.PARCELABLE_KEY, pond)
+                val intent = Intent(itemView.context, PondActivity::class.java).apply {
+                    putExtra(Constants.PARCELABLE_KEY, pond)
                 }
-
-                val pondDetailsFragment = PondDetailsFragment().apply {
-                    arguments = bundle
-                }
-
-                val transaction =
-                    (itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.fragment_container, pondDetailsFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                itemView.context.startActivity(intent)
             }
         }
     }

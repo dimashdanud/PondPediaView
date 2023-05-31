@@ -4,11 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.authenticated.home.explore.ExploreFragmentA">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Explore" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/unavailable_feature"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
 
 </FrameLayout>

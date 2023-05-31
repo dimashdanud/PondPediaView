@@ -95,7 +95,6 @@ class AddFragmentD : Fragment() {
             pondViewModel.insertPond(pond)
         }
         val pondLog = PondLogEntity (
-            pondId = insertedPond.toInt(),
             action = "Pond Created",
             pond = pond,
             timestamp = timestamp.toString(),
